@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Disclaimer / Privacy</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>Disclaimer / Privacy</h1>
+  <ion-list>
+    <form [formGroup]="disclaimerForm" (submit)="submit()">
+      <p class="ion-padding">
+        Informativa sulla privacy e trattamento dei dati personali
+
+        La registrazione tramite questa applicazione richiede l'inserimento di alcune informazioni personali, quali username di gioco, email ed età. Questi dati saranno trattati in conformità alla normativa europea GDPR e saranno utilizzati esclusivamente per la gestione dei tornei Giocomix 2023 e 2024.
+
+        Il responsabile del trattamento dei dati personali è Mondi Sospesi Associazione Culturale, con sede in Cagliari, Viale Elmas 142, C.F [92150260922]. I dati personali verranno trattati in modo da garantire la sicurezza e la riservatezza degli stessi, in linea con la normativa vigente.
+
+        I dati personali raccolti saranno mantenuti per un anno solare, ovvero il tempo necessario alla gestione degli eventi Giocomix degli anni 2023 e 2024. Successivamente, i dati saranno cancellati o resi anonimi in modo permanente, a meno che non vi sia una specifica richiesta da parte dell'utente.
+
+        L'utente ha il diritto di accedere ai propri dati personali in qualsiasi momento, di chiederne la modifica o la cancellazione, nonché di opporsi al loro utilizzo. L'utente può esercitare tali diritti contattando il responsabile del trattamento dei dati personali all'indirizzo email INFO&#64;GIOCOMIX.COM.
+
+        Tramite il pulsante conferma, l'utente accetta le condizioni sopra indicate riguardanti la privacy e il trattamento dei dati personali.
+      </p>
+      <p class="ion-padding">
+        Lo Staff del Giocomix non tollera l'uso di username offensive o discriminatorie da parte degli utenti nei tornei. Qualsiasi utente che utilizzi una username offensiva o discriminatoria verrà immediatamente bannato e rimosso da/l torneo/i in corso. Inoltre, il suo account potrebbe essere sospeso o eliminato a discrezione dello Staff del Giocomix. Ci impegniamo a mantenere un ambiente di gioco rispettoso e inclusivo per tutti i partecipanti. Grazie per la vostra collaborazione.
+      </p>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block">Accetta e registrati
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+  </ion-list>
+</ion-content>

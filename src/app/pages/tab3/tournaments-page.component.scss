@@ -1,0 +1,42 @@
+.card-wrapper {
+  display: flex;
+  gap: 1rem;
+  overflow-x: scroll;
+}
+
+.card-wrapper::-webkit-scrollbar {
+  display:none;
+}
+
+.card {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr;
+  height: 350px;
+  aspect-ratio: 6 / 7;
+  border-radius: 3rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card-info {
+  align-self: end;
+  background: rgba(0, 0, 0, 0.7294117647);
+  border-radius: 0 0 3rem 3rem;
+  height: min-content;
+  padding: 1.5rem;
+  z-index: 0;
+}
+
+.ion-card-wrapper {
+  gap: 1rem;
+}
+
+ion-card {
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+}

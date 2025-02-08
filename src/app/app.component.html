@@ -1,0 +1,11 @@
+<ion-app>
+
+  @if (showInstallButton && !isStandalone) {
+    <div class="install-banner">
+      <p>Vuoi installare l'app per un'esperienza migliore?</p>
+      <ion-button (click)="installPWA()">Installa</ion-button>
+    </div>
+  } @else {
+    <ion-router-outlet></ion-router-outlet>
+  }
+</ion-app>
