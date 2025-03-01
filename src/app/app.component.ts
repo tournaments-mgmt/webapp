@@ -4,6 +4,7 @@ import {IonApp, IonButton, IonRouterOutlet, Platform} from '@ionic/angular/stand
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  styleUrl: 'app.component.scss',
   imports: [IonApp, IonRouterOutlet, IonButton],
 })
 export class AppComponent {
