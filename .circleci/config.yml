@@ -27,6 +27,7 @@ jobs:
   build:
     executor: linux-x86_64
     steps:
+      - checkout
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
