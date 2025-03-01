@@ -8,29 +8,39 @@ import {IonApp, IonButton, IonRouterOutlet, Platform} from '@ionic/angular/stand
 })
 export class AppComponent {
   deferredPrompt: any;
-  showInstallButton = false;
-  isStandalone = false;
+  showAndroidInstall = false;
+  showIosInstall = false;
+  isPWAInstalled = false;
 
   constructor(private platform: Platform) {}
 
   ngOnInit() {
-    // Controlla se l'app è già installata (utile per iOS e Android)
-    this.isStandalone =
-      window.matchMedia('(display-mode: standalone)').matches ||
-      this.platform.is('capacitor');
+    // Controlla se l'app è già installata
+    this.isPWAInstalled = window.matchMedia('(display-mode: standalone)').matches || this.platform.is('capacitor');
 
-    alert(this.isStandalone)
+    if (!this.isPWAInstalled) {
+      this.detectPlatform();
+    }
 
     window.addEventListener('beforeinstallprompt', (event: any) => {
       event.preventDefault();
       this.deferredPrompt = event;
-      this.showInstallButton = true;
+      if (this.platform.is('android')) {
+        this.showAndroidInstall = true;
+      }
     });
 
     window.addEventListener('appinstalled', () => {
       console.log('PWA installata con successo!');
-      this.showInstallButton = false;
+      this.showAndroidInstall = false;
+      this.showIosInstall = false;
     });
+  }
+
+  detectPlatform() {
+    if (this.platform.is('ios') && !this.isPWAInstalled) {
+      this.showIosInstall = true; // Mostra il messaggio per iOS
+    }
   }
 
   installPWA() {
@@ -43,7 +53,7 @@ export class AppComponent {
           console.log('Utente ha rifiutato l’installazione');
         }
         this.deferredPrompt = null;
-        this.showInstallButton = false;
+        this.showAndroidInstall = false;
       });
     }
   }

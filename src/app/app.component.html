@@ -1,9 +1,15 @@
 <ion-app>
-
-  @if (showInstallButton && !isStandalone) {
+  @if (showAndroidInstall) {
     <div class="install-banner">
       <p>Vuoi installare l'app per un'esperienza migliore?</p>
       <ion-button (click)="installPWA()">Installa</ion-button>
+    </div>
+  } @else if (showIosInstall) {
+    <div class="install-guide">
+      <p>
+        📱 Per installare l'app su iPhone, apri Safari e clicca su
+        <strong>Condividi</strong> → <strong>Aggiungi alla schermata Home</strong>.
+      </p>
     </div>
   } @else {
     <ion-router-outlet></ion-router-outlet>
