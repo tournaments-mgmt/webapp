@@ -27,7 +27,7 @@ import {add} from "ionicons/icons";
 export class EntrantsPage {
   constructor() {
 
-    addIcons({ add })
+    addIcons({add})
   }
 
 }

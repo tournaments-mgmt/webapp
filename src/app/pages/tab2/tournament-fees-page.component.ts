@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../../explore-container/explore-container.component';
+import {Component} from '@angular/core';
+import {IonContent, IonHeader, IonTitle, IonToolbar} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tournament-fees-page.component.html',
   styleUrls: ['tournament-fees-page.component.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent]
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent]
 })
 export class TournamentFeesPage {
 
-  constructor() {}
+  constructor() {
+  }
 
 }

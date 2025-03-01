@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {ExploreContainerComponent} from "../../../explore-container/explore-container.component";
+import {Component, OnInit} from '@angular/core';
 import {
-  IonAvatar, IonChip,
   IonContent,
-  IonHeader, IonInput,
+  IonHeader,
+  IonInput,
   IonItem,
   IonLabel,
-  IonList, IonListHeader, IonText,
+  IonList,
+  IonListHeader,
   IonTitle,
   IonToolbar
 } from "@ionic/angular/standalone";
@@ -18,28 +18,25 @@ import {AuthService} from "@services/auth/auth.service";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
   imports: [
-    ExploreContainerComponent,
     IonContent,
     IonHeader,
     IonTitle,
     IonToolbar,
     IonList,
     IonItem,
-    IonAvatar,
     IonLabel,
     IonListHeader,
-    IonChip,
-    IonText,
     IonInput,
     QRCodeComponent
   ]
 })
-export class ProfileComponent  implements OnInit {
+export class ProfileComponent implements OnInit {
   public user: any;
 
   constructor(
     private authService: AuthService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.user = this.authService.getUser();
