@@ -39,7 +39,6 @@ jobs:
       - run:
           name: Tag image and push
           command: |
-            docker image pull sardylan/tournaments-mgmt-webapp:${CIRCLE_SHA1}
             docker image tag sardylan/tournaments-mgmt-webapp:${CIRCLE_SHA1} sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
             docker image push sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
 workflows:
