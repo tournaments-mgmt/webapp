@@ -1,5 +1,5 @@
 {
-  "name": "giocomix-app",
+  "name": "tournaments-mgmt-webapp",
   "integrations": {
     "capacitor": {}
   },
