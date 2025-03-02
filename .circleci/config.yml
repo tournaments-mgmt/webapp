@@ -4,10 +4,10 @@ executors:
   linux-x86_64:
     docker:
       - image: cimg/deploy:2025.01.1
-  linux-aarch64:
-    resource_class: arm.medium
-    docker:
-      - image: cimg/deploy:2025.01.1
+#  linux-aarch64:
+#    resource_class: arm.medium
+#    docker:
+#      - image: cimg/deploy:2025.01.1
 jobs:
   test:
     executor: linux-x86_64
@@ -41,23 +41,23 @@ jobs:
           command: |
             docker image tag sardylan/tournaments-mgmt-webapp:${CIRCLE_SHA1} sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
             docker image push sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
-  build-aarch64:
-    executor: linux-aarch64
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Docker login
-          command: docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_TOKEN}"
-      - run:
-          name: Build image
-          command: docker image build --target=prod --tag=sardylan/tournaments-mgmt-webapp:${CIRCLE_SHA1} .
-      - run:
-          name: Tag image and push
-          command: |
-            docker image tag sardylan/tournaments-mgmt-webapp:${CIRCLE_SHA1} sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
-            docker image push sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
+#  build-aarch64:
+#    executor: linux-aarch64
+#    steps:
+#      - checkout
+#      - setup_remote_docker:
+#          docker_layer_caching: true
+#      - run:
+#          name: Docker login
+#          command: docker login -u "${DOCKERHUB_USERNAME}" -p "${DOCKERHUB_TOKEN}"
+#      - run:
+#          name: Build image
+#          command: docker image build --target=prod --tag=sardylan/tournaments-mgmt-webapp:${CIRCLE_SHA1} .
+#      - run:
+#          name: Tag image and push
+#          command: |
+#            docker image tag sardylan/tournaments-mgmt-webapp:${CIRCLE_SHA1} sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
+#            docker image push sardylan/tournaments-mgmt-webapp:${CIRCLE_TAG}
 workflows:
   test:
     jobs:
@@ -87,13 +87,13 @@ workflows:
               only: /^v\d+\.\d+\.\d+$/
             branches:
               ignore: /.*/
-      - build-aarch64:
-          context:
-            - "Docker Hub"
-          requires:
-            - test
-          filters:
-            tags:
-              only: /^v\d+\.\d+\.\d+$/
-            branches:
-              ignore: /.*/
+#      - build-aarch64:
+#          context:
+#            - "Docker Hub"
+#          requires:
+#            - test
+#          filters:
+#            tags:
+#              only: /^v\d+\.\d+\.\d+$/
+#            branches:
+#              ignore: /.*/
