@@ -1,0 +1,56 @@
+replicaCount: 1
+
+image:
+  repository: sardylan/tournaments-mgmt-webapp
+  pullPolicy: Always
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
+
+service:
+  http:
+    type: ClusterIP
+    port: 80
+
+probes:
+  startup:
+    enabled: true
+    initialDelaySeconds: 2
+    periodSeconds: 2
+    failureThreshold: 3
+  readiness:
+    enabled: true
+    periodSeconds: 5
+    failureThreshold: 1
+  liveness:
+    enabled: true
+    periodSeconds: 5
+    failureThreshold: 3
+
+ingress:
+  enabled: true
+  className: ""
+  hostname: ""
+  annotations:
+    konghq.com/strip-path: "true"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "*"
+    nginx.ingress.kubernetes.io/cors-allow-origin:  ""
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+#  targetMemoryUtilizationPercentage: 70
+
+nodeSelector: {}
+affinity: {}
+tolerations: []
