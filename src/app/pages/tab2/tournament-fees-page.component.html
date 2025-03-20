@@ -13,4 +13,25 @@
     </ion-toolbar>
   </ion-header>
 
+  <div class="ion-padding confirmed-column">
+    <h2>Confermate</h2>
+
+    <div class="wrapper">
+      @for (fee of feeConfirmedList(); track fee) {
+        <app-qrcode-fee [fee]="fee"/>
+      }
+    </div>
+  </div>
+
+  <div class="ion-padding to-confirm-column">
+    <h2>Da confermare</h2>
+
+    <div class="wrapper">
+      @for (fee of feeDraftList(); track fee) {
+        <app-qrcode-fee [fee]="fee"/>
+      }
+
+    </div>
+  </div>
+
 </ion-content>

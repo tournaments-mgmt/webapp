@@ -26,6 +26,7 @@
       "@services/*": ["./src/app/core/services/*"],
       "@environments/*": ["./src/environments/*"],
       "@configs/*": ["./src/app/core/configs/*"],
+      "@interfaces/*": ["./src/app/core/interfaces/*"],
     }
   },
   "angularCompilerOptions": {

@@ -1,0 +1,30 @@
+.tournament-fee {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas:
+    "a c"
+    "b c";
+  background: var(--ion-item-background, var(--ion-background-color, #fff));
+  padding: 1rem;
+
+  .title {
+    grid-area: a;
+  }
+
+  .info {
+    grid-area: b;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  .qr-code-thumb {
+    grid-area: c;
+    justify-content: end;
+    display: flex;
+    padding-left: 1rem;
+    border-left: 1px solid white;
+  }
+}

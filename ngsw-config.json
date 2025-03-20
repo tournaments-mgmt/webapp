@@ -26,5 +26,11 @@
         ]
       }
     }
+  ],
+  "navigationUrls": [
+    "/**",
+    "!/**/*.{css,js,png,jpg,svg,ico}",
+    "!/ngsw-worker.js",
+    "!/manifest.webmanifest"
   ]
 }

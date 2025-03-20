@@ -1,23 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, of, tap, throwError} from "rxjs";
+import {catchError, Observable, tap, throwError} from "rxjs";
+import {endpoints} from "@configs/endpoints";
+import { ApiService } from '@services/api/api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private user: any;
+  public isValid = signal<any | undefined>(undefined);
+  public user = signal<any | undefined>(undefined);
 
   constructor(
     private httpClient: HttpClient,
-  ) { }
+    private apiService: ApiService,
+  ) {
+  }
+
+  public login(token: string) {
+    this.isValid = this.apiService.request.login(token);
+  }
 
   public getUser() {
-    return  { email: "pinco@palla.it", nickname: "pincooopaaall", age: "35"};
+    this.user = this.apiService.request.user.detail();
   }
 
   public createUser(data: any): Observable<any> {
-    return of(data)
+    return this.httpClient.post<any>(endpoints.user.create, data)
       .pipe(
         tap((response) => {
           this.user = {...response};

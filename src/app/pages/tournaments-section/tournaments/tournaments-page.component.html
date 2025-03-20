@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tornei
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tornei</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="ion-padding">
+    <h2>In corso</h2>
+    <div class="card-wrapper">
+      @for (item of runningList(); track item) {
+        <div class="card" style="background-image: url({{ getGameByCode(item.gameCode)?.background }})">
+          <div class="card-info">
+            <h4><ion-text>{{ item.name | uppercase }}</ion-text></h4>
+            <span>{{ item.type }}</span>
+          </div>
+
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="ion-padding">
+    <h2>Prossimamente</h2>
+    <div class="ion-card-wrapper">
+      @for (tournament of scheduledList(); track tournament) {
+        <ion-card>
+          <img alt="Silhouette of mountains" [src]="getGameByCode(tournament.gameCode)?.background"/>
+          <ion-card-header>
+            <ion-card-title>{{ tournament.name }}</ion-card-title>
+            <ion-card-subtitle>{{ tournament.type }}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            Data evento: {{ tournament.date.scheduled.start }} / {{ tournament.date.scheduled.end }}
+          </ion-card-content>
+          <div class="button-wrapper">
+<!--            <ion-nav-link router-direction="forward" [component]="InfoPage">-->
+<!--              <ion-button color="secondary">Info</ion-button>-->
+<!--            </ion-nav-link>-->
+            <ion-nav-link router-direction="forward" [component]="SignupPage" [componentProps]="{tournament}">
+              <ion-button color="primary">Iscriviti</ion-button>
+            </ion-nav-link>
+          </div>
+        </ion-card>
+
+        <!--        <div class="card" style="background-image: url(assets/cover_games/{{item}}.png)">-->
+          <!--          <div class="card-info">-->
+          <!--            <h4>{{ item | uppercase }}</h4>-->
+          <!--            <span>Torneo Round Robin</span>-->
+          <!--          </div>-->
+
+          <!--        </div>-->
+      }
+    </div>
+  </div>
+
+
+</ion-content>

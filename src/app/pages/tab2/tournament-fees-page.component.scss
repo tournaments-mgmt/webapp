@@ -1,0 +1,36 @@
+.ticket {
+  display: grid;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  color: black;
+  border-radius: 1rem;
+  grid-template-areas: ". .";
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+  max-width: 430px;
+
+  img {
+    height: inherit;
+  }
+}
+
+:host {
+
+  .confirmed-column {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(59, 253, 29, 0.5) 50%, rgba(0,0,0,1) 102%);
+  }
+
+  .to-confirm-column {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(253, 201, 29, 0.5) 50%, rgba(0,0,0,1) 102%);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+
+}

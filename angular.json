@@ -45,6 +45,7 @@
           },
           "configurations": {
             "mock": {
+              "serviceWorker": "ngsw-config.json",
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
@@ -53,10 +54,6 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.mock.ts"
-                },
-                {
-                  "replace": "src/app/core/services/auth/auth.service.ts",
-                  "with": "fake/services/auth/auth.service.ts"
                 }
               ],
               "outputHashing": "all"

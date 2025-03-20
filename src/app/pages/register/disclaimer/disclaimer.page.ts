@@ -45,12 +45,12 @@ export class DisclaimerPage implements OnInit {
       accept: true
     });
     if (this.disclaimerForm.valid) {
-      this.authService.createUser(this.playerForm)
-        .subscribe((user: any) => {
-            console.log('registered!!', user);
-            this.router.navigateByUrl(`/tabs/profile`);
-          }
-        );
+      // this.authService.createUser(this.playerForm)
+      //   .subscribe((user: any) => {
+      //       console.log('registered!!', user);
+      //       this.router.navigateByUrl(`/tabs/profile`);
+      //     }
+      //   );
     }
   }
 }

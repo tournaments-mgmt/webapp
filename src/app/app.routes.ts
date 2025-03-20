@@ -2,7 +2,11 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.routes').then( m => m.routes)
+  },
+  {
+    path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.routes').then((m) => m.routes),
   },
   {
@@ -16,5 +20,11 @@ export const routes: Routes = [
   {
     path: 'disclaimer',
     loadComponent: () => import('./pages/register/disclaimer/disclaimer.page').then( m => m.DisclaimerPage)
-  }
+  },
+  {
+    path: '', redirectTo: '/login', pathMatch: 'full',
+  },
+  {
+    path: '**', redirectTo: '/login'
+  },
 ];

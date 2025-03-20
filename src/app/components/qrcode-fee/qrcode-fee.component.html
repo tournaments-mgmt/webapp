@@ -1,0 +1,26 @@
+@let _fee = fee()!;
+
+<div class="tournament-fee">
+        <span class="title">
+          {{ _fee.name }}
+        </span>
+  <div class="info">
+    <div>
+      <ion-label>
+        <h4>{{ _fee.player.name }}</h4>
+        <p>Giocatore</p>
+      </ion-label>
+    </div>
+    <div>
+      <ion-label>
+        <h4>#{{ _fee.player.number }}</h4>
+        <p>Numero</p>
+      </ion-label>
+    </div>
+
+  </div>
+  <div class="qr-code-thumb">
+    <qrcode [qrdata]="_fee.uuid" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+
+</div>

@@ -3,7 +3,7 @@ import { TabsPage } from './tabs.page';
 
 export const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -18,8 +18,8 @@ export const routes: Routes = [
       },
       {
         path: 'tournaments',
-        loadComponent: () =>
-          import('../tab3/tournaments-page.component').then((m) => m.TournamentsPage),
+        loadChildren: () =>
+          import('@pages/tournaments-section/tournaments.routes').then((m) => m.routes),
       },
       {
         path: 'help',

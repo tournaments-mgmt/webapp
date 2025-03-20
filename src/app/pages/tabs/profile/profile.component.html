@@ -13,36 +13,58 @@
     </ion-toolbar>
   </ion-header>
 
-  <div
-    style="display: flex; flex-direction: column"
-    class="ion-padding ion-align-items-center ion-justify-content-center">
-    <qrcode [margin]="1" [qrdata]="'Your data string'" [errorCorrectionLevel]="'M'"></qrcode>
-    <h3>{{user.email}}</h3>
+  @let _user = user();
 
+  <div class="ion-padding">
+    <h2>Informazioni Account</h2>
+
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label>
+          <h3>{{ _user.email}}</h3>
+          <p>Email</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h3>{{ _user.age }}</h3>
+          <p>Età</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </div>
+  <div class="ion-padding">
+    <h2>Nomi giocatore</h2>
+    <div class="ion-padding">Esegui uno swipe a sinistra per modificare o cancellare il nome. Non sarà possibibile modificare o cancellare quando il nome è già stato iscritto.</div>
+<!--    <form class="new-name-section" (ngSubmit)="addNewPlayerName($event)">-->
+<!--      <ion-input #inputName placeholder="Aggiungi un nuovo nome" type="text"></ion-input>-->
+<!--      <ion-button type="submit">-->
+<!--        <ion-icon name="add-circle-outline"/>-->
+<!--      </ion-button>-->
+<!--    </form>-->
+    <ion-button (click)="openNicknameWizard('new')" expand="full">
+      Aggiungi un nuovo nome
+      <ion-icon name="add"/>
+    </ion-button>
 
 
-  <ion-list>
-    <ion-list-header>
-      <ion-label>
-        Informazioni generali
-      </ion-label>
-    </ion-list-header>
-    <ion-item>
-      <ion-input label="Nickname" type="text" [value]="user.nickname"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <h3>{{user.age}}</h3>
-        <p>Età</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>
-        <h3>bf98wqe9jgiuas09q309vioa3</h3>
-        <p>Player UUID</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-list lines="full">
+      @let _players = players();
+      @for (player of _players; track player; ) {
+        <ion-item-sliding>
+          <ion-item>
+            <ion-label>{{player.name}}</ion-label>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option (click)="openNicknameWizard('edit', player)">
+              <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-item-option>
+            <ion-item-option color="danger" (click)="deleteNickname(player.id)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      }
+    </ion-list>
+  </div>
 </ion-content>
